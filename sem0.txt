@@ -1,0 +1,5 @@
+import hashlib
+# ruleid: md5-usage
+digest = hashlib.md5(b"test")
+# ok: md5-usage
+digest = hashlib.sha256(b"test")
