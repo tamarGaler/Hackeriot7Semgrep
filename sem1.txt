@@ -1,0 +1,2 @@
+db_query("SELECT * FROM ...")
+db_query("SELECT * FROM ...", verify=True, env="prod")
