@@ -1,2 +1,7 @@
-db_query("SELECT * FROM ...")
-db_query("SELECT * FROM ...", verify=True, env="prod")
+# Matches
+pickle.loads(user_data)
+pickle.loads(get_input())
+
+# Doesn't match
+safe_pickle_loads(user_data)
+pickle.dump(data)
