@@ -1,0 +1,30 @@
+import requests
+
+# Safe request (HTTPS, with authentication)
+# ok:no-auth-over-http
+safe_url = "https://example.com"
+r = requests.get(safe_url, auth=('user', 'pass'))
+
+# Unsafe request (HTTP, with authentication)
+# ruleid:no-auth-over-http
+unsafe_url = "http://example.com"
+r = requests.get(unsafe_url, auth=('user', 'pass'))
+
+# Unsafe POST request directly
+# ruleid:no-auth-over-http
+r = requests.post("http://example.com/login", auth=('admin', 'admin'))
+
+# Safe POST request directly
+# ok:no-auth-over-http
+r = requests.post("https://example.com/login", auth=('admin', 'admin'))
+
+# HTTP request without authentication (safe)
+# ok:no-auth-over-http
+r = requests.get("http://example.com/public")
+
+# Importing methods directly
+from requests import get
+
+# Unsafe GET request with imported method and auth
+# ruleid:no-auth-over-http
+r = get("http://example.com/private", auth=('user', 'pass'))
