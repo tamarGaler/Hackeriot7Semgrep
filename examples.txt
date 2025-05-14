@@ -1,0 +1,37 @@
+################### 0 ######################
+# Matches
+eval("user_input")
+exec("print('danger')")
+
+# Doesn't match
+print("Hello World")
+safe_eval("user_input")
+
+
+################### 1 ######################
+# Matches
+cursor.execute("SELECT * FROM users WHERE name = '" + user_input + "'")
+cursor.execute("DELETE FROM products WHERE id = " + id)
+
+# Doesn't match
+cursor.execute("SELECT * FROM users WHERE name = ?", (user_input,))
+execute_safe_query(user_input)
+
+################### 2 ######################
+# Matches
+PASSWORD = "SuperSecret123"
+API_KEY = "ABCD1234"
+
+# Doesn't match
+password = get_env_variable("PASSWORD")
+api_key = config.get("api_key")
+
+
+################## 3 ########################
+# Matches
+ssl.wrap_socket(sock, ssl_version=ssl.PROTOCOL_SSLv3)
+ssl.wrap_socket(sock, ssl_version=ssl.PROTOCOL_SSLv2)
+
+# Doesn't match
+ssl.wrap_socket(sock, ssl_version=ssl.PROTOCOL_TLSv1_2)
+ssl.wrap_socket(sock)
