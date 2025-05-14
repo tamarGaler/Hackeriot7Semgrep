@@ -1,0 +1,7 @@
+# Matches
+jwt.decode(token, verify=False)
+jwt.decode(token, options={"verify_signature": False})
+
+# Doesn't match
+jwt.decode(token, verify=True)
+safe_jwt_decode(token)
