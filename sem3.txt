@@ -1,0 +1,11 @@
+# Matches
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+app.config['CORS_HEADERS'] = '*'
+
+# Doesn't match
+response.headers.add('Access-Control-Allow-Origin', 'https://trusted.com')
+cors = CORS(app, resources={r"/api/*": {"origins": "trusted.com"}})
