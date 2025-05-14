@@ -1,0 +1,23 @@
+# Matches
+@app.route("/delete_user", methods=["POST"])
+def delete_user():
+    db.delete_user(request.form["id"])
+    return "Deleted"
+
+@app.route("/change_password", methods=["POST"])
+def change_password():
+    update_password(request.form["password"])
+    return "Password changed"
+
+# Doesn't match
+@auth
+@app.route("/delete_user", methods=["POST"])
+def delete_user():
+    db.delete_user(request.form["id"])
+    return "Deleted"
+
+@auth
+@app.route("/change_password", methods=["POST"])
+def change_password():
+    update_password(request.form["password"])
+    return "Password changed"
