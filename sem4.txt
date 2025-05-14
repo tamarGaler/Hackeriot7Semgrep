@@ -1,0 +1,15 @@
+# Matches
+def handle_request(request):
+    file = open(request.filename, 'w')
+    file.write(request.data)
+
+def process_upload(req):
+    open(req.filepath, 'w').write(req.content)
+
+# Doesn't match
+def read_file(filename):
+    with open(filename, 'r') as file:
+        data = file.read()
+
+def handle_request_safely(req):
+    save_securely(req.filepath, req.content)
